@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import * as mockServices from './mockApi';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
@@ -85,8 +86,15 @@ api.interceptors.response.use(
     }
 );
 
+// Detección de Modo Demo (GitHub Pages o flag local)
+const isDemoMode = window.location.hostname.includes('github.io') || process.env.REACT_APP_USE_MOCK === 'true';
+
+if (isDemoMode) {
+    console.log('⚠️ RUNNING IN DEMO MODE (MOCK API) ⚠️');
+}
+
 // Servicios de autenticación
-export const authService = {
+export const authService = isDemoMode ? mockServices.mockAuthService : {
     login: async (email, password) => {
         const response = await api.post('/auth/login', { email, password });
         return response.data;
@@ -114,7 +122,7 @@ export const authService = {
 };
 
 // Servicios de documentos
-export const documentService = {
+export const documentService = isDemoMode ? mockServices.mockDocumentService : {
     upload: async (formData) => {
         const response = await api.post('/documents/upload', formData, {
             headers: {
@@ -125,7 +133,7 @@ export const documentService = {
     },
 
     getAll: async (params = {}) => {
-        const response = await api.get('/documents/search', { params });
+        const response = await api.get('/documents', { params });
         return response.data;
     },
 
@@ -193,7 +201,7 @@ export const documentService = {
 };
 
 // Servicios de usuarios
-export const userService = {
+export const userService = isDemoMode ? mockServices.mockUserService : {
     getAll: async (params = {}) => {
         const response = await api.get('/users', { params });
         return response.data;
@@ -226,7 +234,7 @@ export const userService = {
 };
 
 // Servicios de logs
-export const logService = {
+export const logService = isDemoMode ? mockServices.mockLogService : {
     getActivity: async (params = {}) => {
         const response = await api.get('/logs/activity', { params });
         return response.data;
