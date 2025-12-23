@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/LegalDoc/static/css/main.feaed56b.css",
-    "main.js": "/LegalDoc/static/js/main.2aca227c.js",
+    "main.js": "/LegalDoc/static/js/main.d81ab9dd.js",
     "static/js/816.50314f43.chunk.js": "/LegalDoc/static/js/816.50314f43.chunk.js",
     "static/js/161.156da56e.chunk.js": "/LegalDoc/static/js/161.156da56e.chunk.js",
     "static/js/899.c5fcbab7.chunk.js": "/LegalDoc/static/js/899.c5fcbab7.chunk.js",
@@ -27,7 +27,7 @@
     "static/css/947.be77114e.chunk.css": "/LegalDoc/static/css/947.be77114e.chunk.css",
     "index.html": "/LegalDoc/index.html",
     "main.feaed56b.css.map": "/LegalDoc/static/css/main.feaed56b.css.map",
-    "main.2aca227c.js.map": "/LegalDoc/static/js/main.2aca227c.js.map",
+    "main.d81ab9dd.js.map": "/LegalDoc/static/js/main.d81ab9dd.js.map",
     "816.50314f43.chunk.js.map": "/LegalDoc/static/js/816.50314f43.chunk.js.map",
     "161.156da56e.chunk.js.map": "/LegalDoc/static/js/161.156da56e.chunk.js.map",
     "899.c5fcbab7.chunk.js.map": "/LegalDoc/static/js/899.c5fcbab7.chunk.js.map",
@@ -54,6 +54,6 @@
   },
   "entrypoints": [
     "static/css/main.feaed56b.css",
-    "static/js/main.2aca227c.js"
+    "static/js/main.d81ab9dd.js"
   ]
 }

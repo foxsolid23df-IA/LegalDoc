@@ -25,3 +25,5 @@ legal-doc-manager/backend/backups/*
 # OS
 .DS_Store
 Thumbs.db
+
+deploy_temp/

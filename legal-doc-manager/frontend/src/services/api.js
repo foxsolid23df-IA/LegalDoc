@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import * as mockServices from './mockApi';
+import {
+    mockAuthService,
+    mockDocumentService,
+    mockUserService,
+    mockLogService
+} from './mockApi';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
@@ -87,14 +92,14 @@ api.interceptors.response.use(
 );
 
 // Detección de Modo Demo (GitHub Pages o flag local)
-const isDemoMode = window.location.hostname.includes('github.io') || process.env.REACT_APP_USE_MOCK === 'true';
+const isDemoMode = true; // window.location.hostname.includes('github.io') || process.env.REACT_APP_USE_MOCK === 'true';
 
 if (isDemoMode) {
     console.log('⚠️ RUNNING IN DEMO MODE (MOCK API) ⚠️');
 }
 
 // Servicios de autenticación
-export const authService = isDemoMode ? mockServices.mockAuthService : {
+export const authService = isDemoMode ? mockAuthService : {
     login: async (email, password) => {
         const response = await api.post('/auth/login', { email, password });
         return response.data;
@@ -122,7 +127,7 @@ export const authService = isDemoMode ? mockServices.mockAuthService : {
 };
 
 // Servicios de documentos
-export const documentService = isDemoMode ? mockServices.mockDocumentService : {
+export const documentService = isDemoMode ? mockDocumentService : {
     upload: async (formData) => {
         const response = await api.post('/documents/upload', formData, {
             headers: {
@@ -201,7 +206,7 @@ export const documentService = isDemoMode ? mockServices.mockDocumentService : {
 };
 
 // Servicios de usuarios
-export const userService = isDemoMode ? mockServices.mockUserService : {
+export const userService = isDemoMode ? mockUserService : {
     getAll: async (params = {}) => {
         const response = await api.get('/users', { params });
         return response.data;
@@ -234,7 +239,7 @@ export const userService = isDemoMode ? mockServices.mockUserService : {
 };
 
 // Servicios de logs
-export const logService = isDemoMode ? mockServices.mockLogService : {
+export const logService = isDemoMode ? mockLogService : {
     getActivity: async (params = {}) => {
         const response = await api.get('/logs/activity', { params });
         return response.data;

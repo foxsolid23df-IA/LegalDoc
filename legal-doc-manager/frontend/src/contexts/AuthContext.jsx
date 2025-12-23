@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
 
             return { success: true };
         } catch (error) {
-            return { success: false, message: error.response?.data?.message || 'Error en login' };
+            return { success: false, message: error.response?.data?.message || error.message || 'Error en login' };
         } finally {
             setLoading(false);
         }

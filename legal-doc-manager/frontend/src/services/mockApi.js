@@ -24,14 +24,18 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 export const mockAuthService = {
     login: async (email, password) => {
         await delay(800);
-        const user = mockUsers.find(u => u.email === email);
+        const cleanEmail = email ? email.trim() : '';
+        const user = mockUsers.find(u => u.email === cleanEmail);
         // En demo, aceptamos cualquier password si el usuario existe, o validamos simple
         if (user && (password === 'Admin123!' || password === 'User123!' || password === '123')) {
             return {
-                token: 'mock-jwt-token-demo-mode',
-                user: user
+                data: {
+                    token: 'mock-jwt-token-demo-mode',
+                    user: user
+                }
             };
         }
+        console.error('Mock Login Failed:', { email: cleanEmail, userFound: !!user });
         throw { response: { status: 401, data: { message: 'Credenciales inválidas (Demo: usa admin@legal.com / Admin123!)' } } };
     },
     logout: async () => { await delay(500); return { success: true }; },
