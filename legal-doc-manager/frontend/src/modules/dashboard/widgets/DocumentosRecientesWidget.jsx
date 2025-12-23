@@ -1,0 +1,1 @@
+import React from 'react'; import { Card, CardContent, Typography } from '@mui/material'; const DocumentosRecientesWidget = () => <Card><CardContent><Typography>DocumentosRecientesWidget</Typography></CardContent></Card>; export default DocumentosRecientesWidget;

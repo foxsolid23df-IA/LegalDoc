@@ -4,7 +4,9 @@ import {
     mockAuthService,
     mockDocumentService,
     mockUserService,
-    mockLogService
+    mockLogService,
+    mockUnidadCasoService,
+    mockDashboardService
 } from './mockApi';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
@@ -262,6 +264,27 @@ export const logService = isDemoMode ? mockLogService : {
 
     getUserLogs: async (userId, params = {}) => {
         const response = await api.get(`/logs/user/${userId}`, { params });
+        return response.data;
+    }
+};
+
+// Servicios de unidades y casos
+export const unidadCasoService = isDemoMode ? mockUnidadCasoService : {
+    obtenerPorId: async (id) => {
+        // En un futuro, esto apuntará a v1
+        const response = await api.get(`/v1/unidades-casos/${id}`);
+        return response.data;
+    },
+    crear: async (data) => {
+        const response = await api.post('/v1/unidades-casos', data);
+        return response.data;
+    }
+};
+
+// Servicios del Dashboard Fusionado
+export const dashboardService = isDemoMode ? mockDashboardService : {
+    obtenerDatosFusionados: async () => {
+        const response = await api.get('/v1/reportes/dashboard');
         return response.data;
     }
 };

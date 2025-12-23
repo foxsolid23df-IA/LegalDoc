@@ -1,0 +1,1 @@
+import React from 'react'; import { Card, CardContent, Typography } from '@mui/material'; const MetricasRentabilidadWidget = () => <Card><CardContent><Typography>MetricasRentabilidadWidget</Typography></CardContent></Card>; export default MetricasRentabilidadWidget;

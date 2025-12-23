@@ -1,0 +1,1 @@
+import React from 'react'; import { Box, Typography } from '@mui/material'; const DocumentosUnidad = () => <Box p={3}><Typography variant='h6'>Componente DocumentosUnidad en construcción</Typography></Box>; export default DocumentosUnidad;

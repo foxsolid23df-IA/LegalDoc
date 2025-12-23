@@ -1,0 +1,1 @@
+import React from 'react'; import { Card, CardContent, Typography } from '@mui/material'; const ActividadEquipoWidget = () => <Card><CardContent><Typography>ActividadEquipoWidget</Typography></CardContent></Card>; export default ActividadEquipoWidget;
