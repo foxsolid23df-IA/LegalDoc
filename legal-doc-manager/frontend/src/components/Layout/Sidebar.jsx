@@ -57,7 +57,7 @@ const Sidebar = () => {
         {
             text: 'Dashboard',
             icon: <DashboardIcon />,
-            path: '/dashboard',
+            path: '/',
             roles: ['admin', 'abogado', 'asistente'],
         },
         {

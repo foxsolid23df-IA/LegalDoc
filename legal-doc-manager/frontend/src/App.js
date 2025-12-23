@@ -7,7 +7,10 @@ import Layout from './components/Layout/Layout';
 
 // Páginas - Lazy loading para mejor rendimiento
 const Login = React.lazy(() => import('./pages/Login/Login'));
-const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
+// const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard')); // Legacy
+const DashboardFusionado = React.lazy(() => import('./modules/dashboard/DashboardFusionado'));
+const UnidadCasoDetalle = React.lazy(() => import('./modules/unidades-casos/UnidadCasoDetalle'));
+
 const DocumentList = React.lazy(() => import('./pages/Documents/DocumentList'));
 const DocumentUpload = React.lazy(() => import('./pages/Documents/DocumentUpload'));
 const DocumentView = React.lazy(() => import('./pages/Documents/DocumentView'));
@@ -40,7 +43,12 @@ function App() {
                 {/* Rutas protegidas con Layout */}
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Navigate to="/dashboard" />} />
-                    <Route path="dashboard" element={<Dashboard />} />
+
+                    {/* Dashboard Fusionado (Default) */}
+                    <Route path="dashboard" element={<DashboardFusionado />} />
+
+                    {/* Unidades y Casos (Nuevo Módulo) */}
+                    <Route path="unidades-casos/:id" element={<UnidadCasoDetalle />} />
 
                     {/* Documentos */}
                     <Route path="documents" element={<DocumentList />} />
@@ -48,7 +56,7 @@ function App() {
                     <Route path="documents/:id" element={<DocumentView />} />
                     <Route path="documents/:id/edit" element={<DocumentEdit />} />
 
-                    {/* Casos */}
+                    {/* Casos Legacy (Mantener por compatibilidad visual si se desea) */}
                     <Route path="cases" element={<Cases />} />
 
                     {/* Usuarios (solo admin) */}
